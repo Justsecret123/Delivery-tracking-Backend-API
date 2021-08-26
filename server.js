@@ -2,9 +2,15 @@
 const express = require('express');
 const cors = require("cors");
 
+//Environment configuration
+require("dotenv").config();
+const app = express();
+const port = process.env.PORT || 5000;
+const MONGODB_URI = process.env.MONGODB_URI; 
+
 //Setting up mongoose
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost:27017/suivi_livraison', {useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true })
 .catch(error => handleError(error));
 
 //Connection and error handling
@@ -17,10 +23,6 @@ connection.once('open', () => {
 connection.on('error', err => {
     logError(err);
 });
-
-require("dotenv").config();
-const app = express();
-const port = process.env.PORT || 5000;
 
 //Dependecies
 app.use(cors());
