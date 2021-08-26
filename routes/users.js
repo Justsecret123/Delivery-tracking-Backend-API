@@ -82,5 +82,47 @@ router.delete('/delete', (req,res)=>{
     
 });
 
+router.patch('/update', (req,res)=>{
+
+    //Parameters
+    let id = req.body.id;
+    let adresse = req.body.adresse; 
+    let email = req.body.email;
+    let login = req.body.login;
+    let password = req.body.password;
+    let nom = req.body.nom; 
+    let prenom = req.body.prenom; 
+    let telephone = req.body.telephone; 
+
+    //Operation
+    User.updateOne({_id: id}, 
+        {$set:
+            {
+                adresse: adresse, 
+                email: email, 
+                login: login, 
+                password: password, 
+                nom: nom, 
+                prenom: prenom, 
+                telephone: telephone
+            } 
+        },
+        (err,result)=>{
+            //"result" will be undefined if the server couldn't process the request
+            if(typeof result!=="undefined"){
+                console.log("Result: ", result);
+                if(result.n==1 && result.ok==1){
+                    res.status(200).json({message: "Success ! "});
+                }else{
+                    res.status(401).json({message: "Something went wrong. User not found "});
+                }
+            }
+        }
+    )
+    //Bad id formatting or inacessible server
+    .catch(err => res.status(400).json({message: "Operation failed: " + err}))
+
+});
+
 
 module.exports = router;
