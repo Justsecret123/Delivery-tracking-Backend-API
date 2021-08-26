@@ -38,5 +38,5 @@ OR
 
 ### Additional notes
 
-> **Method : POST**
-> **Server's port : 5000**
+> - **Method : POST**
+> - **Server's port : 5000**
