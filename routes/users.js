@@ -60,4 +60,27 @@ router.post('/subscribe', (req, res) => {
     
 });
 
+//Route : delete a user
+router.delete('/delete', (req,res)=>{
+
+    //Parameters
+    let id = req.body.id;
+
+    //Operation
+    User.deleteOne({"_id": id}, (err,result)=>{
+        //"result" will be undefined if the server couldn't process the request
+        if(typeof result !== "undefined"){
+            if(result.deletedCount==1){
+                res.status(200).json({message: "User deleted !"});
+            }else{
+                res.status(401).json({message: "An error occured: the user doesn't exist."});
+            }
+        }
+    })
+    //Bad id formatting or inacessible server
+    .catch(err => res.status(400).json({message: "Operation failed: " + err}))
+    
+});
+
+
 module.exports = router;
