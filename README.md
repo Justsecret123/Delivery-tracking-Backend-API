@@ -1,4 +1,4 @@
-# Test the Express API (PORT 5000)
+# Test the Express API (Port: 5000)
 
 ## Subscribe 
 
@@ -57,7 +57,7 @@ OR
 
 - id : *String*
 
-### Response body (res.data)
+#### Response body (res.data)
 
 - message : *String*
 
