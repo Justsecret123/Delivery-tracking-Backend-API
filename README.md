@@ -1,19 +1,10 @@
-# Test the Express API (Port: 5000)
+# Test the Express API 
 
 ## Subscribe 
 
 ```
-> cd backend
-> npm run test-subscribe
+> API URI : https://delivery-tracking-project-api.herokuapp.com/users/subscribe
 ```
-
-OR 
-
-```
-> cd backend 
-> npm run start
-> **Route : (POST) localhost:5000/users/subscribe**
-``` 
 
 ### Data format : JSON
 
@@ -46,9 +37,7 @@ OR
 ## DELETE
 
 ```
-> cd backend 
-> npm run start
-> **Route : (DELETE) localhost:5000/users/delete**
+> API URI: https://delivery-tracking-project-api.herokuapp.com/users/delete
 ```
 
 ### Data format : JSON
@@ -74,9 +63,7 @@ OR
 ## UPDATE 
 
 ```
-> cd backend 
-> npm run start 
-> **Route : (UPDATE) lcoalhost:5000/users/update
+> API URI: https://delivery-tracking-project-api.herokuapp.com/users/update
 ```
 
 ### Data format : JSON
