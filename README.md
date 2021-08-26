@@ -71,6 +71,41 @@ OR
 
 > - **Method : DELETE**
 
+## UPDATE 
+
+```
+> cd backend 
+> npm run start 
+> **Route : (UPDATE) lcoalhost:5000/users/update
+```
+
+### Data format : JSON
+
+#### Request body 
+
+- id: *String* **required**
+- adresse: *String* **required**
+- email: *String* **required**
+- login: *String* **required**
+- password: *String* **required**
+- nom: *String* **required**
+- prenom: *String* **required**
+- telephone: *String* **required**
+
+#### Response body (res.data)
+
+- message: *String*
+
+### Return messages 
+
+- Code 200 : {"message":"Success !"}
+- Code 400 : {"message":"Operation failed: " + *MongoDB log message*}. In this case, the request couldn't be processed by the server. Either caused by bad formatting of *id* or any kind of server crash. 
+- Code 401 : {"message":"Something went wrong. User not found"}. In this case, the inputted *id* did not match any document. 
+
+### Additional notes
+
+> - **Method : PATCH**
+
 # Prerequisites
 
 - Database: Local MongoDB installation (as a Service, preferably)
