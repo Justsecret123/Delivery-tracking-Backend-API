@@ -53,7 +53,7 @@ router.post('/subscribe', (req, res) => {
                 .then(() => res.status(200).json({message: "User added !", id: newUser._id}))
                 .catch(err => res.status(400).json({message: "Error: " + err, id: null}));
             }else{
-                res.status(401).json("Erreur: Le nom d'utilisateur est déjà pris. ");
+                res.status(401).json({message: "Erreur: Le nom d'utilisateur est déjà pris.", id: null});
             }
         }
     });
