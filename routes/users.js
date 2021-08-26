@@ -16,7 +16,6 @@ router.get("/", (req,res)=> {
 router.post('/subscribe', (req, res) => {
     
     //Parameters
-    let is_admin = Boolean(req.body.is_admin); 
     let adresse = req.body.adresse; 
     let email = req.body.email;
     let login = req.body.login;
@@ -25,9 +24,10 @@ router.post('/subscribe', (req, res) => {
     let prenom = req.body.prenom; 
     let telephone = req.body.telephone; 
 
+    //is_admin = false, since an administrator doesn't need to subscribe
     const newUser = new User (
         {
-            is_admin: is_admin, 
+            is_admin: false,
             adresse: adresse, 
             email: email, 
             login: login, 

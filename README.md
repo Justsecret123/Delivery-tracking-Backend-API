@@ -16,7 +16,6 @@ OR
 
 #### Request Body : 
 
-- is_admin: *Boolean* 
 - adresse: *String* 
 - email: *String* 
 - login: *String* **required** & **unique**

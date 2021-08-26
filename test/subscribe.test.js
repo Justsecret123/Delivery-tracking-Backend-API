@@ -32,18 +32,19 @@ const userRouter = require("../routes/users");
 app.use("/users",userRouter);
 
 //Correct test
+
+///Generate a random login
+let login = (Math.random() + 1).toString(36).substring(10);
 const ibrahim_correct = {
-    "is_admin": false,
     "adresse": "Adresse de Ibrahim M.SEROUIS", 
     "email": "ibrahimserouis99@hotmail.com", 
-    "login": "IbrahimSerouis123456__", 
+    "login": login, 
     "password": "chegbsxsqjjeje", 
     "nom": "Test"
 }
 
 //Incorrect test : missing login
 const ibrahim_incorrect = {
-    "is_admin": false,
     "adresse": "Adresse de Ibrahim M.SEROUIS", 
     "email": "ibrahimserouis99@hotmail.com", 
     "password": "chegbsxsq%20", 
