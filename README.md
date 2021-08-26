@@ -40,3 +40,9 @@ OR
 
 > - **Method : POST**
 > - **Server's port : 5000**
+
+# Prerequisites
+
+- Database: Local MongoDB installation (as a Service, preferably)
+- Npm, Node.js
+- ARC, POSTMAN, or any API test client
