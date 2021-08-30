@@ -108,9 +108,11 @@ OR
 
 ## LOGIN
 
+```
 > cd backend 
 > npm run start 
 > **Route : (POST) localhost:5000/users/login
+```
 
 ### Data format : JSON
 
