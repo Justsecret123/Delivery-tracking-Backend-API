@@ -12,7 +12,7 @@ OR
 ```
 > cd backend 
 > npm run start
-> **Route : (POST) localhost:5000/users/subscribe**
+> **Route : (POST) localhost:5000/users/subscribe
 ``` 
 
 ### Data format : JSON
@@ -48,7 +48,7 @@ OR
 ```
 > cd backend 
 > npm run start
-> **Route : (DELETE) localhost:5000/users/delete**
+> **Route : (DELETE) localhost:5000/users/delete
 ```
 
 ### Data format : JSON
