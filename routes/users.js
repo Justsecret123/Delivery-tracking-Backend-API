@@ -12,6 +12,31 @@ router.get("/", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 });
 
+//Route login 
+router.post("/login", (req,res)=> {
+
+    //Parameters 
+    let login = req.body.login;
+    let password = req.body.password;
+
+    if (typeof login !== "undefined" && typeof password !== "undefined"){
+        User.findOne({login: login, password: password}, 
+        (err,result)=>{
+            if (result !== null){
+                res.status(200).json({message: "Success!", userId: result._id});
+            }else{
+                res.status(450).json({message: "User not found!"});
+            }
+        }
+        )
+        //The server (MongoDB) could not process the request
+        .catch(err => res.status(500).json({message: "Operation failed!" + err}));
+    }else{
+        res.status(400).json({message: "Invalid request body!"});
+    }
+
+});
+
 //Route: Add user
 router.post('/subscribe', (req, res) => {
     

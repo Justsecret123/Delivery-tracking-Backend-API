@@ -37,9 +37,9 @@ app.use("/users",userRouter);
 let login = (Math.random() + 1).toString(36).substring(10);
 const ibrahim_correct = {
     "adresse": "Adresse de Ibrahim M.SEROUIS", 
-    "email": "ibrahimserouis99@hotmail.com", 
+    "email": "ibrahimserouis@hotmail.com", 
     "login": login, 
-    "password": "chegbsxsqjjeje", 
+    "password": "test", 
     "nom": "Test"
 }
 
