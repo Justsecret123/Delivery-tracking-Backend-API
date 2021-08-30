@@ -93,6 +93,35 @@
 
 > - **Method : PATCH**
 
+## LOGIN
+
+```
+> API URI: https://delivery-tracking-project-api.herokuapp.com/users/login
+```
+
+### Data format : JSON
+
+#### Request body 
+
+- login: *String* **required**
+- password: *String* **required**
+
+#### Response body 
+
+- message : *String*
+- userId : *String*
+
+### Return messages 
+
+- Code 200 : {"message": "Success!", "userId": *TheUserId*}
+- Code 400 : {"message": "Invalid request body!"}. In this case, either the login or the password is missing. 
+- Code 450 : {"message": "User not found!"}
+- Code 500 : {"message": "Operation failed!" + *An additional error message*}. In this case, the server failed to process the request. 
+
+### Additional notes 
+
+> - **Method: POST**
+
 # Prerequisites
 
 - Database: Local MongoDB installation (as a Service, preferably)
