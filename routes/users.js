@@ -4,6 +4,7 @@ let User = require("../models/user.model");
 
 //Body parsers
 var bodyParser = require("body-parser");
+const { isValidObjectId } = require("mongoose");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true}));
 
@@ -19,7 +20,7 @@ router.get('/user/:id', (req, res) => {
     let id = req.params.id;
 
     //Valid id formatting
-    if(id !== null){
+    if(id !== null && isValidObjectId(id)){
 
         User.findById(id, (err, result) => {
             if(result!==null){
