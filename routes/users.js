@@ -4,6 +4,7 @@ let User = require("../models/user.model");
 
 //Body parsers
 var bodyParser = require("body-parser");
+const { isValidObjectId } = require("mongoose");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true}));
 
@@ -11,6 +12,30 @@ router.use(bodyParser.urlencoded({ extended: true}));
 router.get("/", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 });
+
+//Route: User
+router.get('/user/:id', (req, res) => {
+
+    //Parameters 
+    let id = req.params.id;
+
+    //Valid id formatting
+    if(id !== null && isValidObjectId(id)){
+
+        User.findById(id, (err, result) => {
+            if(result!==null){
+                res.status(200).json({message: "Success!", user: result});
+            }else{
+                res.status(450).json({message: "User not found!"})
+            }
+        }).catch(err => res.status(500).json({message: "Operation failed!" + err}));  
+
+    }else{
+        res.status(400).json({message: "Error: Bad request ID formatting!"});
+    }
+
+});
+
 
 //Route login 
 router.post("/login", (req,res)=> {
@@ -66,8 +91,8 @@ router.post('/subscribe', (req, res) => {
     //Var id = null
     var id = 0;
 
-    //Check if the login is already taken
-    const userExists =  User.countDocuments({"login":login}, 
+    //Check if the login is already taken, then proceed
+    const operation =  User.countDocuments({"login":login}, 
     (err,count) =>  {
         if(err){
             console.log("Erreur: " + err);

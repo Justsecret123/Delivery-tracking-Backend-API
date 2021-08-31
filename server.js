@@ -15,7 +15,7 @@ connection.once('open', () => {
 })
 
 connection.on('error', err => {
-    logError(err);
+    console.log(err);
 });
 
 require("dotenv").config();
