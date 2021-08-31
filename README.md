@@ -137,6 +137,37 @@ OR
 
 > - **Method: POST**
 
+## User/:id
+
+```
+> cd backend 
+> npm run start 
+> **Route : (GET) localhost:5000/users/user/:id
+```
+
+### Data format : JSON
+
+#### Request params
+
+- login: *String* **required**
+- password: *String* **required**
+
+#### Response body 
+
+- message : *String*
+- user : *User*
+
+### Return messages 
+
+- Code 200 : {"message": "Success!", "user": *TheUser*}
+- Code 400 : {"message": "Error: Bad request ID formatting!"}. 
+- Code 450 : {"message": "User not found!"}
+- Code 500 : {"message": "Operation failed!" + *An additional error message*}. In this case, the server failed to process the request. 
+
+### Additional notes 
+
+> - **Method: GET**
+
 # Prerequisites
 
 - Database: Local MongoDB installation (as a Service, preferably)
