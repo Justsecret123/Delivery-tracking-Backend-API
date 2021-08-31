@@ -13,7 +13,7 @@ router.get("/", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 });
 
-//Route: User
+//Route: User/:id
 router.get('/user/:id', (req, res) => {
 
     //Parameters 
@@ -28,7 +28,7 @@ router.get('/user/:id', (req, res) => {
             }else{
                 res.status(450).json({message: "User not found!"})
             }
-        }).catch(err => res.status(500).json({message: "Operation failed!" + err}));  
+        }).catch(err => res.status(500).json({message: "Operation failed! " + err}));  
 
     }else{
         res.status(400).json({message: "Error: Bad request ID formatting!"});
