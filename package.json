@@ -13,6 +13,9 @@
   "devDependencies": {},
   "scripts": {
     "test-subscribe": "node ./test/subscribe.test.js",
+    "test-model-deliveryman": "node ./test/model-deliveryman.test.js",
+    "test-model-delivery": "node ./test/model-delivery.test.js",
+    "test-model-order": "node ./test/model-order.test.js",
     "start": "node server.js"
   },
   "keywords": [],

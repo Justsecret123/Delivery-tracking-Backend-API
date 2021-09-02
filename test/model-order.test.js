@@ -29,19 +29,44 @@ app.use(express.json());
 //Defined routes
 
 ///User
-const userRouter = require("./routes/users");
+const userRouter = require("../routes/users");
 app.use("/users",userRouter);
 
 ///Order
-const orderRouter = require("./routes/orders");
+const orderRouter = require("../routes/orders");
 app.use("/orders",orderRouter);
 
+//Test
+const Order = require("../models/order.model");
+
+///Generate a random order
+const randomUserId = mongoose.Types.ObjectId();
+const randomDeliveryFee =    (Math.random() + 1);
+const date = "2021-05-18T16:00:00.000+00:00";
+const newOrder = new Order ( 
+    {
+        is_active: false, 
+        id_user: randomUserId, 
+        delivery_fee: randomDeliveryFee, 
+        payment_method: "cash", 
+        photo: null, 
+        order_date: date, 
+        processing_date: date, 
+        delivery_date: date, 
+        cancellation_date: date
+    }
+); 
+
+newOrder.save()
+.then(() => console.log({message: "Order added !"}))
+.catch(() => console.log({message: "Error: "}));
+
 ///Delivery man
-const deliveryRouter = require("./routes/deliveries");
+const deliveryRouter = require("../routes/deliveries");
 app.use("/deliveries/", deliveryRouter);
 
 ///Delivery man
-const deliveryManRouter = require("./routes/deliverymen");
+const deliveryManRouter = require("../routes/deliverymen");
 app.use("/deliveryMen/", deliveryManRouter);
 
 //Starting the server
