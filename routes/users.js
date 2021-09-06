@@ -131,6 +131,7 @@ router.delete('/delete', (req,res)=>{
     
 });
 
+//Route : update user
 router.patch('/update', (req,res)=>{
 
     //Parameters
