@@ -6,10 +6,12 @@ const Schema = mongoose.Schema;
 const deliverymanSchema = new Schema(
     {
         email: { 
-            type: String
+            type: String, 
+            required: true
         },
         nom: {
-            type: String
+            type: String, 
+            required: true
         },
         prenom: {
             type: String
