@@ -39,7 +39,7 @@ router.post('/add', (req, res) => {
     if(typeof nom!=="undefined" && typeof email!=="undefined"){
         newDeliveryMan.save()
         .then(()=> res.status(200).json({message: "Delivery man added !", deliveryMan: newDeliveryMan}))
-        .catch((err)=> res.status(400).json({message: "Error:" + err}));    
+        .catch((err)=> res.status(400).json({message: "Error: " + err}));    
     }else{
         res.status(450).json({message: "Invalid request body!"});
     }
