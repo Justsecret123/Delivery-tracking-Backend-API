@@ -149,8 +149,7 @@ OR
 
 #### Request params
 
-- login: *String* **required**
-- password: *String* **required**
+- id: *String* **required**
 
 #### Response body 
 
