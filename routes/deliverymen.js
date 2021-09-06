@@ -13,15 +13,6 @@ router.get("/", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 });
 
-//Route: get all deliverymen 
-router.get("/list", (req,res)=> {
-
-    DeliveryMan.find((err,result)=>{
-        res.status(200).json({message: "Success!", deliveryMen: result});
-    }).catch(err => res.status(400).json({message: "An error occured: " + err}));
-    
-});
-
 //Route: id 
 router.get("/:id", (req,res)=> {
 
@@ -43,6 +34,60 @@ router.get("/:id", (req,res)=> {
     }
 
 });
+
+//Route: get all deliverymen 
+router.get("/list", (req,res)=> {
+
+    DeliveryMan.find((err,result)=>{
+        res.status(200).json({message: "Success!", deliveryMen: result});
+    }).catch(err => res.status(400).json({message: "An error occured: " + err}));
+    
+});
+
+//Route : search by 'nom' or 'prenom'
+router.post("/search", (req,res)=> {
+
+    //Parameters
+    let searchTerm = req.body.searchTerm;
+
+    if(typeof searchTerm !=="undefined"){
+        //Trim the search terms 
+        trimmedSearchTerm = searchTerm.replace(/\s/g, '');
+
+        //Concat nom & prenom
+        DeliveryMan.aggregate([
+            {
+                $addFields: {
+                    "nameFilter": {
+                        $concat: [
+                            "$nom", 
+                            "", 
+                            "$prenom"
+                        ]
+                    }
+                }
+            }, 
+            {
+                $match: {
+                    nameFilter: {
+                        $regex: trimmedSearchTerm, 
+                        $options: "i"
+                    }
+                }
+            }
+        ],(err,result)=>{
+            if(!err){
+                res.status(200).json({message: "Success !", deliveryMen: result});
+            }else{
+                res.status(400).json({message: "Error: " + err});
+            }
+        });  
+    }else{
+        res.status(450).json({message: "Bad request formatting !"});
+    }
+    
+});
+
 
 //Route: Add delivery man
 router.post('/add', (req, res) => {
