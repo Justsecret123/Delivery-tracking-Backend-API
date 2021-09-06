@@ -29,8 +29,22 @@ app.use(cors());
 app.use(express.json());
 
 //Defined routes
+
+///User
 const userRouter = require("./routes/users");
 app.use("/users",userRouter);
+
+///Order
+const orderRouter = require("./routes/orders");
+app.use("/orders",orderRouter);
+
+///Delivery man
+const deliveryRouter = require("./routes/deliveries");
+app.use("/deliveries/", deliveryRouter);
+
+///Delivery man
+const deliveryManRouter = require("./routes/deliverymen");
+app.use("/deliveryMen/", deliveryManRouter);
 
 //Starting the server
 app.listen(port, () => {
