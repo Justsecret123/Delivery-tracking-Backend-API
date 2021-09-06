@@ -99,4 +99,45 @@ router.delete('/delete', (req,res)=>{
     
 });
 
+//Route : update delivery man
+router.patch('/update', (req,res)=>{
+
+    //Parameters
+    let id = req.body.id;
+    let email = req.body.email; 
+    let nom = req.body.nom; 
+    let prenom = req.body.prenom; 
+    let phone = req.body.phone; 
+    let photo = req.body.photo; 
+    let dob = req.body.dob;
+
+    //Operation
+    DeliveryMan.updateOne({_id: id}, 
+        {$set:
+            {
+                email: email, 
+                nom: nom, 
+                prenom: prenom, 
+                phone: phone, 
+                photo: photo, 
+                dob: dob
+            } 
+        },
+        (err,result)=>{
+            //"result" will be undefined if the server couldn't process the request
+            if(typeof result!=="undefined"){
+                //console.log("Result: ", result);
+                if(result.n==1 && result.ok==1){
+                    res.status(200).json({message: "Success! "});
+                }else{
+                    res.status(450).json({message: "Something went wrong. Delivery man not found "});
+                }
+            }
+        }
+    )
+    //Bad request formatting or inaccessible server
+    .catch(err => res.status(400).json({message: "Operation failed: " + err}))
+
+});
+
 module.exports = router;

@@ -132,6 +132,7 @@ router.delete('/delete', (req,res)=>{
     
 });
 
+//Route : update User
 router.patch('/update', (req,res)=>{
 
     //Parameters
@@ -160,7 +161,7 @@ router.patch('/update', (req,res)=>{
         (err,result)=>{
             //"result" will be undefined if the server couldn't process the request
             if(typeof result!=="undefined"){
-                console.log("Result: ", result);
+                //console.log("Result: ", result);
                 if(result.n==1 && result.ok==1){
                     res.status(200).json({message: "Success ! "});
                 }else{
