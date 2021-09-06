@@ -13,6 +13,28 @@ router.get("/", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 });
 
+//Route: id 
+router.get("/:id", (req,res)=> {
+
+    //Parameters
+    let id = req.params.id; 
+
+    //Valid id formatting
+    if(id!==null && isValidObjectId(id)){
+        DeliveryMan.findById(id,(err,result) => {
+            if(result!==null){
+                res.status(200).json({message: "Success!", deliveryMan: result});
+            }else{
+                res.status(450).json({message: "User not found!"});
+            }
+        }).catch(err => res.status(500).json({message: "Operation failed! " + err}));
+
+    }else{
+        res.status(400).json({message: "Bad request id formatting!"});
+    }
+
+});
+
 //Route: Add delivery man
 router.post('/add', (req, res) => {
     
