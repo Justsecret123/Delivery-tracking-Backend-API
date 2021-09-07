@@ -13,8 +13,17 @@ router.get("/", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 });
 
+//Route: get all deliverymen 
+router.get("/list", (req,res)=> {
+
+    DeliveryMan.find((err,result)=>{
+        res.status(200).json({message: "Success!", deliveryMen: result});
+    }).catch(err => res.status(400).json({message: "An error occured: " + err}));
+    
+});
+
 //Route: id 
-router.get("/:id", (req,res)=> {
+router.get("/get/:id", (req,res)=> {
 
     //Parameters
     let id = req.params.id; 
@@ -33,15 +42,6 @@ router.get("/:id", (req,res)=> {
         res.status(400).json({message: "Bad request id formatting!"});
     }
 
-});
-
-//Route: get all deliverymen 
-router.get("/list", (req,res)=> {
-
-    DeliveryMan.find((err,result)=>{
-        res.status(200).json({message: "Success!", deliveryMen: result});
-    }).catch(err => res.status(400).json({message: "An error occured: " + err}));
-    
 });
 
 //Route : search by 'nom' or 'prenom'
