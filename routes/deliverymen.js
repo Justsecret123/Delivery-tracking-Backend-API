@@ -23,7 +23,7 @@ router.get("/list", (req,res)=> {
 });
 
 //Route: id 
-router.get("/:id", (req,res)=> {
+router.get("/get/:id", (req,res)=> {
 
     //Parameters
     let id = req.params.id; 
