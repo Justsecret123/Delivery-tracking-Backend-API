@@ -14,7 +14,7 @@ router.get("/", (req,res)=> {
 });
 
 //Route: Get all orders
-router.get("/list", (req,res)=> {
+router.get("/list/all", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 
     Order.find((err,result)=>{
