@@ -4,7 +4,6 @@ let Order = require("../models/order.model");
 
 //Body parsers
 var bodyParser = require("body-parser");
-const { isValidObjectId } = require("mongoose");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true}));
 
@@ -15,7 +14,6 @@ router.get("/", (req,res)=> {
 
 //Route: Get all orders
 router.get("/list/all", (req,res)=> {
-    res.status(200).json("Welcome to the main route :D");
 
     Order.find((err,result)=>{
         res.status(200).json({message: "Success!", orders: result});
