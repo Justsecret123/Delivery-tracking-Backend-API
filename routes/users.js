@@ -71,7 +71,7 @@ router.post("/loginadmin", (req,res)=> {
     if (typeof login !== "undefined" && typeof password !== "undefined"){
         User.findOne({login: login, password: password}, 
         (err,result)=>{
-            if (result !== null && !result.is_admin){
+            if (result !== null && result.is_admin){
                 res.status(200).json({message: "Success!", userId: result._id});
             }else{
                 res.status(450).json({message: "User not found!"});
