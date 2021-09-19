@@ -5,13 +5,19 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema(
     {
-        is_active: {
-            type: Boolean, 
-            required: true
+        status: {
+            type: String
         },
         id_user : {
             type: String, 
             required: true
+        },
+        location : {
+            latitude : {type: Number}, 
+            longitude : {type: Number}
+        },
+        address : {
+            type: String
         },
         delivery_fee: {
             type: Number
@@ -19,9 +25,6 @@ const orderSchema = new Schema(
         payment_method: {
             type: String, 
             enum: ["cash","card"]
-        }, 
-        photo: {
-            type: String
         }, 
         order_date: {
             type: Date
