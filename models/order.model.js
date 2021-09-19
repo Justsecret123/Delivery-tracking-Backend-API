@@ -12,6 +12,9 @@ const orderSchema = new Schema(
             type: String, 
             required: true
         },
+        id_deliveryman : {
+            type: String
+        },
         location : {
             latitude : {type: Number}, 
             longitude : {type: Number}
