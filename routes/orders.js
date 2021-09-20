@@ -22,7 +22,7 @@ router.get("/list/all", (req,res)=> {
 });
 
 //Route: id 
-router.get("/get/:id", (req,res)=> {
+router.get("/order/:id", (req,res)=> {
 
     //Parameters
     let id = req.params.id; 
