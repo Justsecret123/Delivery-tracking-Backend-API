@@ -21,4 +21,26 @@ router.get("/list/all", (req,res)=> {
     .catch(err => res.status(400).json({message: "An error occured: " + err}));
 });
 
+//Route: id 
+router.get("/get/:id", (req,res)=> {
+
+    //Parameters
+    let id = req.params.id; 
+
+    //Valid id formatting
+    if(id!==null && isValidObjectId(id)){
+        Order.findById(id,(err,result) => {
+            if(result!==null){
+                res.status(200).json({message: "Success!", order: result});
+            }else{
+                res.status(450).json({message: "User not found!"});
+            }
+        }).catch(err => res.status(500).json({message: "Operation failed! " + err}));
+
+    }else{
+        res.status(400).json({message: "Bad request id formatting!"});
+    }
+
+});
+
 module.exports = router;
