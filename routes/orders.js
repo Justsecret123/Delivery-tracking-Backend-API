@@ -54,9 +54,9 @@ router.delete('/delete', (req,res)=>{
         //"result" will be undefined if the server couldn't process the request
         if(typeof result !== "undefined"){
             if(result.deletedCount==1){
-                res.status(200).json({message: "Delivery man deleted !"});
+                res.status(200).json({message: "Order deleted !"});
             }else{
-                res.status(450).json({message: "An error occured: the delivery man doesn't exist."});
+                res.status(450).json({message: "An error occured: the order doesn't exist."});
             }
         }
     })
