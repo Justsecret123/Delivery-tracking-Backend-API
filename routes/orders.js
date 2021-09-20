@@ -21,11 +21,11 @@ router.get("/list/all", (req,res)=> {
     .catch(err => res.status(400).json({message: "An error occured: " + err}));
 });
 
-//Route: id 
-router.post("/order/:id", (req,res)=> {
+//Route : id
+router.get("/order/:id", (req,res)=> {
 
     //Parameters
-    let id = req.body.id; 
+    let id = req.params.id; 
 
     //Valid id formatting
     if(id!==null && isValidObjectId(id)){
@@ -33,7 +33,7 @@ router.post("/order/:id", (req,res)=> {
             if(result!==null){
                 res.status(200).json({message: "Success!", order: result});
             }else{
-                res.status(450).json({message: "User not found!"});
+                res.status(450).json({message: "Order not found!"});
             }
         }).catch(err => res.status(500).json({message: "Operation failed! " + err}));
 
