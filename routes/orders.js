@@ -12,15 +12,6 @@ router.get("/", (req,res)=> {
     res.status(200).json("Welcome to the main route :D");
 });
 
-//Route: Get all orders
-router.get("/list/all", (req,res)=> {
-
-    Order.find((err,result)=>{
-        res.status(200).json({message: "Success!", orders: result});
-    })
-    .catch(err => res.status(400).json({message: "An error occured: " + err}));
-});
-
 //Route : id
 router.get("/order/:id", (req,res)=> {
 
@@ -42,5 +33,16 @@ router.get("/order/:id", (req,res)=> {
     }
 
 });
+
+//Route: Get all orders
+router.get("/list/all", (req,res)=> {
+
+    Order.find((err,result)=>{
+        res.status(200).json({message: "Success!", orders: result});
+    })
+    .catch(err => res.status(400).json({message: "An error occured: " + err}));
+});
+
+
 
 module.exports = router;
