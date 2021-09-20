@@ -22,10 +22,10 @@ router.get("/list/all", (req,res)=> {
 });
 
 //Route: id 
-router.get("/order/:id", (req,res)=> {
+router.post("/order/:id", (req,res)=> {
 
     //Parameters
-    let id = req.params.id; 
+    let id = req.body.id; 
 
     //Valid id formatting
     if(id!==null && isValidObjectId(id)){
