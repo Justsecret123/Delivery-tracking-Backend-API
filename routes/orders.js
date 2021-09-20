@@ -44,10 +44,10 @@ router.get("/list/all", (req,res)=> {
 });
 
 //Route : delete a user
-router.delete('/delete', (req,res)=>{
+router.delete('/delete/:id', (req,res)=>{
 
     //Parameters
-    let id = req.body.id;
+    let id = req.params.id;
 
     //Operation
     Order.deleteOne({"_id": id}, (err,result)=>{
