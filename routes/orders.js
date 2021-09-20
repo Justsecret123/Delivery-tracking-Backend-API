@@ -43,6 +43,28 @@ router.get("/list/all", (req,res)=> {
     .catch(err => res.status(400).json({message: "An error occured: " + err}));
 });
 
+//Route : delete a user
+router.delete('/delete', (req,res)=>{
+
+    //Parameters
+    let id = req.body.id;
+
+    //Operation
+    Order.deleteOne({"_id": id}, (err,result)=>{
+        //"result" will be undefined if the server couldn't process the request
+        if(typeof result !== "undefined"){
+            if(result.deletedCount==1){
+                res.status(200).json({message: "Delivery man deleted !"});
+            }else{
+                res.status(450).json({message: "An error occured: the delivery man doesn't exist."});
+            }
+        }
+    })
+    //Bad id formatting or inacessible server
+    .catch(err => res.status(400).json({message: "Operation failed: " + err}))
+    
+});
+
 
 
 module.exports = router;
